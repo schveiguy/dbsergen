@@ -1,5 +1,5 @@
-name "mysqlsergen"
-description "Generate sqlbuilder-compatible D code for existing data tables"
+name "dbsergen"
+description "Generate D code structs for serializing existing data tables"
 authors "Steven Schveighoffer"
 copyright "Copyright © 2020, Steven Schveighoffer"
 license "Boost-1.0"
