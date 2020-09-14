@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/mysqlsergen
+mysqlsergen.so
+mysqlsergen.dylib
+mysqlsergen.dll
+mysqlsergen.a
+mysqlsergen.lib
+mysqlsergen-test-*
+*.exe
+*.o
+*.obj
+*.lst
