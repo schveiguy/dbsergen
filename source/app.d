@@ -49,63 +49,64 @@ int main(string[] args)
             /*static foreach(m; ["name", "extra", "type", "octetsMax", "charsMax", "numericPrecision", "key", "colType"])
                 write(", ",  m, ": ", __traits(getMember, c, m));
             writeln();*/
+            auto nullable = c.nullable ? "Nullable!" : "";
             switch(c.type)
             {
             case "int":
                 if(c.colType == "int unsigned")
-                    writefln("    uint %s;", makeValidDSymbol(c.name));
+                    writefln("    %suint %s;", nullable, makeValidDSymbol(c.name));
                 else
-                    writefln("    int %s;", makeValidDSymbol(c.name));
+                    writefln("    %sint %s;", nullable, makeValidDSymbol(c.name));
                 break;
             case "tinyint":
                 if(c.colType == "tinyint unsigned")
-                    writefln("    ubyte %s;", makeValidDSymbol(c.name));
+                    writefln("    %subyte %s;", nullable, makeValidDSymbol(c.name));
                 else if(c.colType == "tinyint(1)")
-                    writefln("    bool %s;", makeValidDSymbol(c.name));
+                    writefln("    %sbool %s;", nullable, makeValidDSymbol(c.name));
                 else
-                    writefln("    byte %s;", makeValidDSymbol(c.name));
+                    writefln("    %sbyte %s;", nullable, makeValidDSymbol(c.name));
                 break;
             case "smallint":
                 if(c.colType == "smallint unsigned")
-                    writefln("    ushort %s;", makeValidDSymbol(c.name));
+                    writefln("    %sushort %s;", nullable, makeValidDSymbol(c.name));
                 else
-                    writefln("    short %s;", makeValidDSymbol(c.name));
+                    writefln("    %sshort %s;", nullable, makeValidDSymbol(c.name));
                 break;
             case "bigint":
                 if(c.colType == "bigint unsigned")
-                    writefln("    ulong %s;", makeValidDSymbol(c.name));
+                    writefln("    %sulong %s;", nullable, makeValidDSymbol(c.name));
                 else
-                    writefln("    long %s;", makeValidDSymbol(c.name));
+                    writefln("    %slong %s;", nullable, makeValidDSymbol(c.name));
                 break;
             case "float":
-                writefln("    float %s;", makeValidDSymbol(c.name));
+                writefln("    %sfloat %s;", nullable, makeValidDSymbol(c.name));
                 break;
             case "double":
-                writefln("    double %s;", makeValidDSymbol(c.name));
+                writefln("    %sdouble %s;", nullable, makeValidDSymbol(c.name));
                 break;
             case "bit":
                 if(c.colType == "bit")
-                    writefln("    bool %s;", makeValidDSymbol(c.name));
+                    writefln("    %sbool %s;", nullable, makeValidDSymbol(c.name));
                 else
                     throw new Exception("unknown col type: " ~ c.colType);
                 break;
             case "time":
-                writefln("    TimeOfDay %s;", makeValidDSymbol(c.name));
+                writefln("    %sTimeOfDay %s;", nullable, makeValidDSymbol(c.name));
                 break;
             case "datetime":
             case "timestamp":
-                writefln("    DateTime %s;", makeValidDSymbol(c.name));
+                writefln("    %sDateTime %s;", nullable, makeValidDSymbol(c.name));
                 break;
             case "date":
-                writefln("    Date %s;", makeValidDSymbol(c.name));
+                writefln("    %sDate %s;", nullable, makeValidDSymbol(c.name));
                 break;
             case "char":
             case "varchar":
             case "text":
-                writefln("    string %s;", makeValidDSymbol(c.name));
+                writefln("    %sstring %s;", nullable, makeValidDSymbol(c.name));
                 break;
             case "blob":
-                writefln("    ubyte[] %s;", makeValidDSymbol(c.name));
+                writefln("    %subyte[] %s;", nullable, makeValidDSymbol(c.name));
                 break;
             default:
                 throw new Exception("Unknown type: " ~ c.type);
